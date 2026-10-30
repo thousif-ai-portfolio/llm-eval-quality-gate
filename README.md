@@ -14,6 +14,9 @@ request when quality or safety regresses:
 Everything runs locally and free on a laptop with [Ollama](https://ollama.com)
 (`llama3.2:3b`, `qwen2.5-coder:3b`). CI needs no model at all: it re-scores a recorded run.
 
+**Video walkthrough (4 min):** [docs/demo.mp4](docs/demo.mp4) · narration in
+[docs/video-script.md](docs/video-script.md)
+
 ## The problem
 
 A prompt or model change that "looks better" in a few manual tries can quietly break
