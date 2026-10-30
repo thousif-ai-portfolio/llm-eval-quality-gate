@@ -1,60 +1,40 @@
-{"key": "227fd047418de7f784da8bd0", "kind": "correctness", "verdict": {"reason": "2 GB of free disk space for the local cache", "verdict": "correct"}}
-{"key": "334ea66e3de6c7433d162f28", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "89b56dc46deba341273fa144", "kind": "correctness", "verdict": {"reason": "Run atlas init.", "verdict": "correct"}}
-{"key": "d6c04d4bad7a410d71507caa", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "93b1f7faf3f474d0ebe1638a", "kind": "correctness", "verdict": {"reason": "It is skipped with a warning (max_upload_mb, error E1043).", "verdict": "correct"}}
-{"key": "dcb02e30f76eb5177f3e9f81", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: The default limit is 250 MB.", "verdict": "unsupported"}}
-{"key": "082968fa6c0ed8760c74dbb7", "kind": "correctness", "verdict": {"reason": "5 attempts with exponential backoff", "verdict": "correct"}}
-{"key": "2539824a4ba55def5c287d9a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "f8356dcfeb0c06c7a9d43d3b", "kind": "correctness", "verdict": {"reason": "0 means the upload speed is unlimited.", "verdict": "correct"}}
-{"key": "31b0be84b74150b2d21f240f", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "02fdaea7b9fe40aae909743f", "kind": "correctness", "verdict": {"reason": "atlas verify compares checksums of local and remote files and reports mismatches", "verdict": "correct"}}
-{"key": "7ffb342a8c00170668c210cf", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "c501ef6870e2bbed76ba25a6", "kind": "correctness", "verdict": {"reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash", "verdict": "correct"}}
-{"key": "d7777ce2e1848a4aebf36969", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "58504322cfbf1d6a7416fbab", "kind": "correctness", "verdict": {"reason": "To fix Atlas error E1007, which indicates that the access token has expired, you need to run atlas login again.", "verdict": "correct"}}
-{"key": "08ccee467c93ff9f800ba105", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "3b1991c73877efe147995420", "kind": "correctness", "verdict": {"reason": "the Atlas log file for a bug report is located at ~/.atlas/logs/atlas.log.", "verdict": "correct"}}
-{"key": "31085b1fb66b8a52ae57075a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "afa0d049fd438a661839b8cd", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable before running Atlas.", "verdict": "correct"}}
-{"key": "326d40f2c16a69460542c437", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "27732673e863647319a2de97", "kind": "correctness", "verdict": {"reason": "384 dimensions", "verdict": "correct"}}
-{"key": "e08f53c64c584470ccdeeb3a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "9c12c5c1a47fbe3edae0354b", "kind": "correctness", "verdict": {"reason": "HNSW is short for Hierarchical Navigable Small World.", "verdict": "correct"}}
-{"key": "d488cb264d07434e467cda29", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "c4b35a9f89b884659fb8a44c", "kind": "correctness", "verdict": {"reason": "k = 60.", "verdict": "correct"}}
-{"key": "614629c26ffbe39397dd1292", "kind": "faithfulness", "verdict": {"reason": "no source states: The value of k usually used in Reciprocal Rank Fusion is 60.", "verdict": "unsupported"}}
-{"key": "2ef73402090fd711b35d891d", "kind": "correctness", "verdict": {"reason": "A reranker is only run on the top 20 to 50 candidates because it is slower than vector search, so it is only applied to the top candidates to maintain efficiency.", "verdict": "correct"}}
-{"key": "8b6870e9b8b7a3596f30eb36", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "e20183a97050d9ada1aeeb0e", "kind": "correctness", "verdict": {"reason": "p95 latency reveals slow outliers that an average hides.", "verdict": "correct"}}
-{"key": "b6f24e420d45b4c83f3463ae", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "61449fbcb9d319d6b974e06c", "kind": "correctness", "verdict": {"reason": "one English token is roughly four characters, or about three quarters of a word", "verdict": "correct"}}
-{"key": "682a54950cc3cb31f5f329d0", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "f7c0e94f14463027f04a826c", "kind": "correctness", "verdict": {"reason": "A temperature of 0 makes the model pick the most likely token each time, giving repeatable answers, which is useful for evaluation.", "verdict": "correct"}}
-{"key": "6bb018c972318a309ac20068", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "2375a27c840572f1c65afe2f", "kind": "correctness", "verdict": {"reason": "Argon2 is recommended for storing passwords", "verdict": "correct"}}
-{"key": "4d5dc780b18bf2cf107f4f20", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "febb2d1f8a935fc7bb32e38a", "kind": "correctness", "verdict": {"reason": "Answers must change when the documents change.", "verdict": "correct"}}
-{"key": "429081e5ae304e2df32f9b54", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "b244d551630e279a08431f3e", "kind": "correctness", "verdict": {"reason": "Recall@5 is the most common version.", "verdict": "correct"}}
-{"key": "97f5b5d13b36a72ebd77757d", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
-{"key": "fceed14a98ad8caa172f6204", "kind": "correctness", "verdict": {"reason": "at least 2 GB of free disk space for the local cache", "verdict": "correct"}}
-{"key": "1d947396cbd34e5a4c15e60a", "kind": "correctness", "verdict": {"reason": "The command that creates the default atlas.toml file", "verdict": "correct"}}
-{"key": "ae96d6813c1f6a6116d7cc84", "kind": "correctness", "verdict": {"reason": "The default limit is 250 MB.", "verdict": "correct"}}
-{"key": "6f9672d9f2d9563f62f2724b", "kind": "correctness", "verdict": {"reason": "retry_limit", "verdict": "incorrect"}}
-{"key": "b37715cd44540fe87d20a78f", "kind": "correctness", "verdict": {"reason": "There is no cap on the upload speed in kilobytes per second.", "verdict": "correct"}}
-{"key": "e763694cd10f68c7cfd9e650", "kind": "correctness", "verdict": {"reason": "The atlas verify command compares checksums of local and remote files", "verdict": "incorrect"}}
-{"key": "d52202413db84f4671b8d465", "kind": "correctness", "verdict": {"reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash.", "verdict": "incorrect"}}
-{"key": "4b752d498bdbfe2a6c57a6d2", "kind": "correctness", "verdict": {"reason": "The access token has expired", "verdict": "correct"}}
-{"key": "dd4ea0afa9f7846de4908b94", "kind": "correctness", "verdict": {"reason": "~/.atlas/logs/atlas.log", "verdict": "correct"}}
-{"key": "d12f8beb04d3f1e01eea2d77", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable", "verdict": "correct"}}
-{"key": "9b7ea3903426ec7d5a24dace", "kind": "correctness", "verdict": {"reason": "384 dimensions", "verdict": "correct"}}
-{"key": "b1ac6cae59faa0227cca0503", "kind": "correctness", "verdict": {"reason": "Hierarchical Navigable Small World", "verdict": "correct"}}
-{"key": "d4bf5d6ec59d1fb9046db745", "kind": "correctness", "verdict": {"reason": "The value of k used in Reciprocal Rank Fusion", "verdict": "correct"}}
-{"key": "7c0e007ff1b99115492c10a4", "kind": "correctness", "verdict": {"reason": "A reranker is only run on the top 20 to 50 candidates", "verdict": "correct"}}
-{"key": "91723f7e4b0f86e7f065b160", "kind": "correctness", "verdict": {"reason": "Slow outliers: 95 percent of requests are faster than p95.", "verdict": "correct"}}
-{"key": "cd1c9d22cfd264294f527112", "kind": "correctness", "verdict": {"reason": "one English token is roughly four characters", "verdict": "correct"}}
-{"key": "cfebe12818c7940560316db3", "kind": "correctness", "verdict": {"reason": "A temperature of 0 makes the model pick the most likely token each time", "verdict": "correct"}}
-{"key": "794c37cd99d09758a349a0f0", "kind": "correctness", "verdict": {"reason": "Argon2", "verdict": "correct"}}
-{"key": "2fe88a5b08b52bc2d8a1a215", "kind": "correctness", "verdict": {"reason": "answers must change when documents change", "verdict": "incorrect"}}
-{"key": "3186a2931e36344b7e06efa2", "kind": "correctness", "verdict": {"reason": "none", "verdict": "incorrect"}}
+{"key": "bc79145d240abf1fc14c5ee6", "kind": "correctness", "verdict": {"reason": "at least 2 GB of free disk space", "verdict": "correct"}}
+{"key": "7c12a6ca7cfdf7c0ec92c2da", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the Atlas Sync manual, the system requirements for the local cache ", "verdict": "unsupported"}}
+{"key": "7c3e2b93a63320f71721afe5", "kind": "correctness", "verdict": {"reason": "Run atlas init.", "verdict": "correct"}}
+{"key": "10d4caf07e81b95ce3924a0f", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: atlas init", "verdict": "unsupported"}}
+{"key": "f87ba9de120a385901d89e34", "kind": "correctness", "verdict": {"reason": "5 attempts, with exponential backoff", "verdict": "correct"}}
+{"key": "feb830ba0c2073bcefedff8f", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the Atlas Sync manual, the default number of retries for a failed t", "verdict": "unsupported"}}
+{"key": "4b1dd7e4f3b5cccd3835fbfc", "kind": "correctness", "verdict": {"reason": "0 means the upload speed is unlimited.", "verdict": "incorrect"}}
+{"key": "3183154e72939ee487d6c3c8", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Setting `bandwidth_limit` to 0 means that there is no cap on the upload speed in", "verdict": "unsupported"}}
+{"key": "b99b0434bbdad45160965652", "kind": "correctness", "verdict": {"reason": "The command that finds files whose checksums don't match is indeed atlas verify.", "verdict": "correct"}}
+{"key": "561f8304e98fed0b9ccc705e", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: To find files whose checksums don't match, you can use the `atlas verify` comman", "verdict": "unsupported"}}
+{"key": "417380806b509c8145e52d3d", "kind": "correctness", "verdict": {"reason": "None", "verdict": "incorrect"}}
+{"key": "7a394163bfe53ed51b59a931", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is mentioned in source (atlas-sync-manual.pdf, page 5) under the troublesho", "verdict": "unsupported"}}
+{"key": "891fceb5aef3f48c55ebee9b", "kind": "correctness", "verdict": {"reason": "The access token has expired", "verdict": "correct"}}
+{"key": "2de1578f10bf7c025f3a7664", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Don't worry, I'm here to help you troubleshoot that error!", "verdict": "unsupported"}}
+{"key": "2428406c042ac036694bda62", "kind": "correctness", "verdict": {"reason": "~/.atlas/logs/atlas.log", "verdict": "correct"}}
+{"key": "d52bc5b425f489170a2286c6", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This file is where all the important information about your sync process is stor", "verdict": "unsupported"}}
+{"key": "27a96bea37f88c671194600c", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable before running Atlas.", "verdict": "correct"}}
+{"key": "0c11744906f8e154972a8f3a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Running Atlas behind a corporate proxy can be a bit tricky, but don't worry, I'v", "verdict": "unsupported"}}
+{"key": "a7204e2b5fc73d29404e1710", "kind": "correctness", "verdict": {"reason": "384 dimensions", "verdict": "correct"}}
+{"key": "859a368443e58cc20643830a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is stated on page 1 of the embeddings.md file, which is source.", "verdict": "unsupported"}}
+{"key": "3652386a60c855df282d6e51", "kind": "correctness", "verdict": {"reason": "HNSW stands for Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "3923168de1102a42080846c8", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: HNSW stands for Hierarchical Navigable Small World.", "verdict": "unsupported"}}
+{"key": "c3109883011fcb8dcf2f99e9", "kind": "correctness", "verdict": {"reason": "k = 60", "verdict": "correct"}}
+{"key": "51f22fdd120cf0256c2278a5", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: the value of k used in Reciprocal Rank Fusion (RRF) is usually 60.", "verdict": "unsupported"}}
+{"key": "2394883de7e46ab868fa62fa", "kind": "correctness", "verdict": {"reason": "The reranker is slower than vector search.", "verdict": "correct"}}
+{"key": "34b1ef2b86483fe9865b2922", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: So, you're wondering why a reranker is only run on the top few candidates.", "verdict": "unsupported"}}
+{"key": "a3a9342874e9204a5e28049c", "kind": "correctness", "verdict": {"reason": "p95 latency shows the slowest 5% of requests", "verdict": "correct"}}
+{"key": "d9c23f0739b77f5ef228ba18", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Let's dive into the world of deployment and operational metrics.", "verdict": "unsupported"}}
+{"key": "d2f18677846cc3b6c257ee3a", "kind": "correctness", "verdict": {"reason": "one token in English is roughly four characters, or about three quarters of a word.", "verdict": "correct"}}
+{"key": "bf2c059503a0b9c51a92bf05", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "be7adbec9914252d9c31f9b0", "kind": "correctness", "verdict": {"reason": "0", "verdict": "correct"}}
+{"key": "52129910f5b452c3afecac10", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is useful for evaluation, as it allows for consistent and predictable resul", "verdict": "unsupported"}}
+{"key": "2acc0007159722e63270c3ac", "kind": "correctness", "verdict": {"reason": "Argon2", "verdict": "correct"}}
+{"key": "edd836b8d5e9542315c3254a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the deployment-ops.md guide, the recommended hashing algorithm for ", "verdict": "unsupported"}}
+{"key": "92ff5af475cf21f0a134fa86", "kind": "correctness", "verdict": {"reason": "answers must change when documents change", "verdict": "incorrect"}}
+{"key": "7c2098144836b82b112901d5", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is because the cached answer might not reflect the latest updates or correc", "verdict": "unsupported"}}
+{"key": "6bcf5c4d0e3d694a8b808264", "kind": "correctness", "verdict": {"reason": "Recall@5", "verdict": "correct"}}
+{"key": "f34e2a6fc8ced1ee7b5ceb17", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Recall@5 is the most common version of Recall@k used.", "verdict": "unsupported"}}
+{"key": "a7a51e84574f13b0320558d2", "kind": "correctness", "verdict": {"reason": "larger files are skipped with a warning", "verdict": "correct"}}
+{"key": "c4e1b519fe4b5311537c21e9", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: larger files are skipped with a warning when it is set to aes256", "verdict": "unsupported"}}
