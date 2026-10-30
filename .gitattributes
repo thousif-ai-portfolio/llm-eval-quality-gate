@@ -1,0 +1,5 @@
+# LF everywhere: the dataset manifest hashes exact file bytes, so a CRLF checkout would
+# fail `evalgate dataset verify`.
+* text=auto eol=lf
+*.png binary
+*.mp4 binary

@@ -1,0 +1,38 @@
+{"key": "bc79145d240abf1fc14c5ee6", "kind": "correctness", "verdict": {"reason": "at least 2 GB of free disk space", "verdict": "correct"}}
+{"key": "7c12a6ca7cfdf7c0ec92c2da", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the Atlas Sync manual, the system requirements for the local cache ", "verdict": "unsupported"}}
+{"key": "7c3e2b93a63320f71721afe5", "kind": "correctness", "verdict": {"reason": "Run atlas init.", "verdict": "correct"}}
+{"key": "10d4caf07e81b95ce3924a0f", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: atlas init", "verdict": "unsupported"}}
+{"key": "f87ba9de120a385901d89e34", "kind": "correctness", "verdict": {"reason": "5 attempts, with exponential backoff", "verdict": "correct"}}
+{"key": "feb830ba0c2073bcefedff8f", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the Atlas Sync manual, the default number of retries for a failed t", "verdict": "unsupported"}}
+{"key": "4b1dd7e4f3b5cccd3835fbfc", "kind": "correctness", "verdict": {"reason": "0 means the upload speed is unlimited.", "verdict": "incorrect"}}
+{"key": "3183154e72939ee487d6c3c8", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Setting `bandwidth_limit` to 0 means that there is no cap on the upload speed in", "verdict": "unsupported"}}
+{"key": "b99b0434bbdad45160965652", "kind": "correctness", "verdict": {"reason": "The command that finds files whose checksums don't match is indeed atlas verify.", "verdict": "correct"}}
+{"key": "561f8304e98fed0b9ccc705e", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: To find files whose checksums don't match, you can use the `atlas verify` comman", "verdict": "unsupported"}}
+{"key": "417380806b509c8145e52d3d", "kind": "correctness", "verdict": {"reason": "None", "verdict": "incorrect"}}
+{"key": "7a394163bfe53ed51b59a931", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is mentioned in source (atlas-sync-manual.pdf, page 5) under the troublesho", "verdict": "unsupported"}}
+{"key": "891fceb5aef3f48c55ebee9b", "kind": "correctness", "verdict": {"reason": "The access token has expired", "verdict": "correct"}}
+{"key": "2de1578f10bf7c025f3a7664", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Don't worry, I'm here to help you troubleshoot that error!", "verdict": "unsupported"}}
+{"key": "2428406c042ac036694bda62", "kind": "correctness", "verdict": {"reason": "~/.atlas/logs/atlas.log", "verdict": "correct"}}
+{"key": "d52bc5b425f489170a2286c6", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This file is where all the important information about your sync process is stor", "verdict": "unsupported"}}
+{"key": "27a96bea37f88c671194600c", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable before running Atlas.", "verdict": "correct"}}
+{"key": "0c11744906f8e154972a8f3a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Running Atlas behind a corporate proxy can be a bit tricky, but don't worry, I'v", "verdict": "unsupported"}}
+{"key": "a7204e2b5fc73d29404e1710", "kind": "correctness", "verdict": {"reason": "384 dimensions", "verdict": "correct"}}
+{"key": "859a368443e58cc20643830a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is stated on page 1 of the embeddings.md file, which is source.", "verdict": "unsupported"}}
+{"key": "3652386a60c855df282d6e51", "kind": "correctness", "verdict": {"reason": "HNSW stands for Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "3923168de1102a42080846c8", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: HNSW stands for Hierarchical Navigable Small World.", "verdict": "unsupported"}}
+{"key": "c3109883011fcb8dcf2f99e9", "kind": "correctness", "verdict": {"reason": "k = 60", "verdict": "correct"}}
+{"key": "51f22fdd120cf0256c2278a5", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: the value of k used in Reciprocal Rank Fusion (RRF) is usually 60.", "verdict": "unsupported"}}
+{"key": "2394883de7e46ab868fa62fa", "kind": "correctness", "verdict": {"reason": "The reranker is slower than vector search.", "verdict": "correct"}}
+{"key": "34b1ef2b86483fe9865b2922", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: So, you're wondering why a reranker is only run on the top few candidates.", "verdict": "unsupported"}}
+{"key": "a3a9342874e9204a5e28049c", "kind": "correctness", "verdict": {"reason": "p95 latency shows the slowest 5% of requests", "verdict": "correct"}}
+{"key": "d9c23f0739b77f5ef228ba18", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Let's dive into the world of deployment and operational metrics.", "verdict": "unsupported"}}
+{"key": "d2f18677846cc3b6c257ee3a", "kind": "correctness", "verdict": {"reason": "one token in English is roughly four characters, or about three quarters of a word.", "verdict": "correct"}}
+{"key": "bf2c059503a0b9c51a92bf05", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "be7adbec9914252d9c31f9b0", "kind": "correctness", "verdict": {"reason": "0", "verdict": "correct"}}
+{"key": "52129910f5b452c3afecac10", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is useful for evaluation, as it allows for consistent and predictable resul", "verdict": "unsupported"}}
+{"key": "2acc0007159722e63270c3ac", "kind": "correctness", "verdict": {"reason": "Argon2", "verdict": "correct"}}
+{"key": "edd836b8d5e9542315c3254a", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: According to the deployment-ops.md guide, the recommended hashing algorithm for ", "verdict": "unsupported"}}
+{"key": "92ff5af475cf21f0a134fa86", "kind": "correctness", "verdict": {"reason": "answers must change when documents change", "verdict": "incorrect"}}
+{"key": "7c2098144836b82b112901d5", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is because the cached answer might not reflect the latest updates or correc", "verdict": "unsupported"}}
+{"key": "6bcf5c4d0e3d694a8b808264", "kind": "correctness", "verdict": {"reason": "Recall@5", "verdict": "correct"}}
+{"key": "f34e2a6fc8ced1ee7b5ceb17", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Recall@5 is the most common version of Recall@k used.", "verdict": "unsupported"}}

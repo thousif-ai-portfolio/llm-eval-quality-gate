@@ -1,0 +1,78 @@
+{
+  "model": "llama3.2:3b",
+  "prompt_version": "v3",
+  "kinds": {
+    "correctness": {
+      "n": 16,
+      "agreement": 0.875,
+      "kappa": 0.75,
+      "false_passes": 0,
+      "false_fails": 2
+    },
+    "faithfulness": {
+      "n": 16,
+      "agreement": 0.688,
+      "kappa": 0.429,
+      "false_passes": 0,
+      "false_fails": 5
+    },
+    "all": {
+      "n": 32,
+      "agreement": 0.781,
+      "kappa": 0.582,
+      "false_passes": 0,
+      "false_fails": 7
+    }
+  },
+  "disagreements": [
+    {
+      "id": "f-rag-03",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: if a file exceeds the max_upload_mb limit, it is skipped with a warning."
+    },
+    {
+      "id": "f-rag-09",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: Include this file when reporting a bug: Atlas writes logs to ~/.atlas/logs/atlas"
+    },
+    {
+      "id": "f-rag-18",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: The ops guide recommends Argon2 as a slow salted hash for storing passwords, nev"
+    },
+    {
+      "id": "f-rag-20",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "no source states: Recall@5 is the most common version."
+    },
+    {
+      "id": "f-rag-14",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: A reranker is only run on the top 20 to 50 candidates because it is slower than "
+    },
+    {
+      "id": "c-rag-07",
+      "kind": "correctness",
+      "human": true,
+      "judge": false,
+      "reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash."
+    },
+    {
+      "id": "c-rag-19",
+      "kind": "correctness",
+      "human": true,
+      "judge": false,
+      "reason": "answers must change when documents change"
+    }
+  ]
+}

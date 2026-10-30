@@ -1,0 +1,11 @@
+{
+  "version": "v1",
+  "frozen_at": "2026-10-30T12:13:52+00:00",
+  "files": {
+    "agent.jsonl": "87dd142e93a65b2091ae4cd8f1ce25d2e53ff2e6ebd6b15f68e1968c16026e14",
+    "fixtures/atlas-release-notes.md": "2dcc9215e9a7a92864c7c8f15ceceb20b83bd8d4c52a17e021ab42fb5a8707db",
+    "fixtures/atlas-support-faq.md": "8b17e2ef0570e69501ddf494c8f96818841ec3fd8b2ace0e3fe01d5858d8b499",
+    "rag.jsonl": "a75a228936ab3e02557be6fad69a24bc98cbcf396b7c15004a6e098a2601add9"
+  },
+  "fingerprint": "873d03c1f7d6"
+}

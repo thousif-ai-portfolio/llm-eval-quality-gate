@@ -1,0 +1,127 @@
+{
+  "model": "qwen2.5-coder:3b",
+  "prompt_version": "v4",
+  "kinds": {
+    "correctness": {
+      "n": 16,
+      "agreement": 0.688,
+      "kappa": 0.2,
+      "false_passes": 5,
+      "false_fails": 0
+    },
+    "faithfulness": {
+      "n": 16,
+      "agreement": 0.438,
+      "kappa": 0.027,
+      "false_passes": 1,
+      "false_fails": 8
+    },
+    "all": {
+      "n": 32,
+      "agreement": 0.562,
+      "kappa": 0.097,
+      "false_passes": 6,
+      "false_fails": 8
+    }
+  },
+  "disagreements": [
+    {
+      "id": "f-rag-03",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quote does not match the sentence: if a file exceeds the max_upload_mb limit"
+    },
+    {
+      "id": "f-rag-04",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: retry_limit is 5"
+    },
+    {
+      "id": "f-rag-05",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: which is equivalent to unlimited bandwidth"
+    },
+    {
+      "id": "f-rag-08",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: To fix Atlas error E1007"
+    },
+    {
+      "id": "f-rag-16",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "no source states: One English token is roughly four characters"
+    },
+    {
+      "id": "f-rag-17",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quote does not match the sentence: giving repeatable answers"
+    },
+    {
+      "id": "f-rag-18",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "no source states: The ops guide recommends Argon2 as a slow salted hash for storing passwords"
+    },
+    {
+      "id": "f-rag-14",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "no source states: A reranker is only run on the top 20 to 50 candidates because it is slower than vector search"
+    },
+    {
+      "id": "f-s1",
+      "kind": "faithfulness",
+      "human": false,
+      "judge": true,
+      "reason": "every sentence is quoted from the sources"
+    },
+    {
+      "id": "c-w2",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "It retries 3 times by default."
+    },
+    {
+      "id": "c-w3",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "Hierarchical Navigable Small World"
+    },
+    {
+      "id": "c-w4",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "k is usually set to 10."
+    },
+    {
+      "id": "c-w5",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "384 dimensions"
+    },
+    {
+      "id": "c-w6",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "atlas verify compares checksums and reports mismatches"
+    }
+  ]
+}

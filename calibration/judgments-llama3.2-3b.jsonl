@@ -1,0 +1,32 @@
+{"key": "a3d2486d1abefb7b025181ed", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: if a file exceeds the max_upload_mb limit, it is skipped with a warning.", "verdict": "unsupported"}}
+{"key": "3c2c30cfb7d95a230bda07b1", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "6372f653e9bbf084157b86f7", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "73331e79518dc52a9ba7dc87", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "e9651866751ce0a948583687", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Include this file when reporting a bug: Atlas writes logs to ~/.atlas/logs/atlas", "verdict": "unsupported"}}
+{"key": "52c34d4c0eeb0cf310cd30d9", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "c1a4ec19c4afcaffb7cb565d", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "1bd3d59c7961ef2420fa0f25", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: The ops guide recommends Argon2 as a slow salted hash for storing passwords, nev", "verdict": "unsupported"}}
+{"key": "a7b69319c5d503df5cf8ffb4", "kind": "faithfulness", "verdict": {"reason": "no source states: Recall@5 is the most common version.", "verdict": "unsupported"}}
+{"key": "74c9144626fa933c1c1c0d38", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: A reranker is only run on the top 20 to 50 candidates because it is slower than ", "verdict": "unsupported"}}
+{"key": "92fbb751fe8027e93fa48903", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Files larger than max_upload_mb are skipped with a warning and retried later.", "verdict": "unsupported"}}
+{"key": "f5f51df34e1862358046f19f", "kind": "faithfulness", "verdict": {"reason": "number 10 is not in the sources: Atlas retries a failed transfer 5 times, waiting 10 seconds between attempts.", "verdict": "unsupported"}}
+{"key": "10f72fa3d1428635ec750091", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: One token is roughly four characters, and a page of text is about 500 tokens.", "verdict": "unsupported"}}
+{"key": "4a31ba271c9a3d9303dd0a04", "kind": "faithfulness", "verdict": {"reason": "no source states: Recall@5 is the most common version, and most benchmarks also require MRR@10.", "verdict": "unsupported"}}
+{"key": "834d7a315f62b70be821f4e0", "kind": "faithfulness", "verdict": {"reason": "number 24 is not in the sources: E1007 means the access token expired; run atlas login again and the new token lasts 24 hours.", "verdict": "unsupported"}}
+{"key": "37054154dde8fcc43e82054f", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: The ops guide recommends hashing passwords with Argon2 or bcrypt.", "verdict": "unsupported"}}
+{"key": "fceed14a98ad8caa172f6204", "kind": "correctness", "verdict": {"reason": "at least 2 GB of free disk space for the local cache", "verdict": "correct"}}
+{"key": "1d947396cbd34e5a4c15e60a", "kind": "correctness", "verdict": {"reason": "The command that creates the default atlas.toml file", "verdict": "correct"}}
+{"key": "d52202413db84f4671b8d465", "kind": "correctness", "verdict": {"reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash.", "verdict": "incorrect"}}
+{"key": "d12f8beb04d3f1e01eea2d77", "kind": "correctness", "verdict": {"reason": "set the HTTPS_PROXY environment variable", "verdict": "correct"}}
+{"key": "b1ac6cae59faa0227cca0503", "kind": "correctness", "verdict": {"reason": "Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "d4bf5d6ec59d1fb9046db745", "kind": "correctness", "verdict": {"reason": "The value of k used in Reciprocal Rank Fusion", "verdict": "correct"}}
+{"key": "91723f7e4b0f86e7f065b160", "kind": "correctness", "verdict": {"reason": "Slow outliers: 95 percent of requests are faster than p95.", "verdict": "correct"}}
+{"key": "2fe88a5b08b52bc2d8a1a215", "kind": "correctness", "verdict": {"reason": "answers must change when documents change", "verdict": "incorrect"}}
+{"key": "31044f72b54e1b594e093046", "kind": "correctness", "verdict": {"reason": "0", "verdict": "correct"}}
+{"key": "3742ea2ade0ab97fe87af706", "kind": "correctness", "verdict": {"reason": "The key fact is that setting bandwidth_limit to 0 removes the cap on upload speed.", "verdict": "correct"}}
+{"key": "92afd211dc123a65f6f9035f", "kind": "correctness", "verdict": {"reason": "At least 2 GB of free disk space", "verdict": "incorrect"}}
+{"key": "3b02903d42d6a4895cc4727c", "kind": "correctness", "verdict": {"reason": "5 attempts", "verdict": "incorrect"}}
+{"key": "ce6ec019bf6c2c3bff8b25b0", "kind": "correctness", "verdict": {"reason": "Hierarchical Network Search Workflow", "verdict": "incorrect"}}
+{"key": "b9506b3f3d02b6b668654981", "kind": "correctness", "verdict": {"reason": "k is used in Reciprocal Rank Fusion", "verdict": "incorrect"}}
+{"key": "19abd08ce46d48e589d8bd60", "kind": "correctness", "verdict": {"reason": "none", "verdict": "incorrect"}}
+{"key": "3e7645df965a6e35c9d79538", "kind": "correctness", "verdict": {"reason": "atlas verify compares checksums and reports mismatches", "verdict": "incorrect"}}

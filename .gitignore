@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+# Test-account credentials for Project 1; never commit.
+.env
+# Local SQLite history; runs and summaries that matter are committed under runs/.
+data/
+node_modules/
+promptfoo/output/

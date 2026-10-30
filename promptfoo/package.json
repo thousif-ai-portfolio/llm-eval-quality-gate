@@ -1,0 +1,11 @@
+{
+  "name": "evalgate-promptfoo",
+  "private": true,
+  "description": "Pinned promptfoo for the prompt x model comparison",
+  "scripts": {
+    "compare": "promptfoo eval -c promptfooconfig.yaml --no-cache"
+  },
+  "devDependencies": {
+    "promptfoo": "0.124.1"
+  }
+}

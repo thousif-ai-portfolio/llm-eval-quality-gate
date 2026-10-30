@@ -1,0 +1,28 @@
+# Model comparison: the same agent suite with llama3.2:3b instead of qwen2.5-coder:3b.
+label = "agent-llama3.2"
+dataset = "v1"
+
+[rag]
+# Project 1 (grounded-ai-knowledge-assistant) running locally.
+url = "http://localhost:8000"
+project1 = "../grounded-ai-knowledge-assistant"
+mode = "hybrid_rerank"   # Project 1's default search mode
+
+[agent]
+# A local model driving Project 2's MCP tool server.
+project2 = "../github-issue-coding-agent"
+model = "llama3.2:3b"
+prompt = "prompts/agent_v1.txt"
+max_steps = 3
+
+[judge]
+# Chosen by calibration against 32 hand labels (calibration/): each model is used for
+# the check it agreed with people on most.
+correctness_model = "llama3.2:3b"       # 88% agreement, kappa 0.75, no false passes
+faithfulness_model = "qwen2.5-coder:3b" # 81% agreement, kappa 0.59 (quote-then-verify)
+
+[pricing]
+# What the same tokens would cost on a paid API, per million tokens. The local models
+# cost nothing; this shows what the workload would cost hosted. Edit to match a provider.
+input_per_mtok = 0.15
+output_per_mtok = 0.60

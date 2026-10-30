@@ -1,0 +1,114 @@
+{
+  "label": "baseline",
+  "dataset": "v1",
+  "fingerprint": "873d03c1f7d6",
+  "cases": 60,
+  "passed": 28,
+  "pass_rate": 0.467,
+  "metrics": {
+    "rag.correctness": {
+      "rate": 0.75,
+      "n": 20
+    },
+    "rag.faithfulness": {
+      "rate": 0.9,
+      "n": 20
+    },
+    "rag.facts": {
+      "rate": 1.0,
+      "n": 20
+    },
+    "rag.citations": {
+      "rate": 1.0,
+      "n": 20
+    },
+    "rag.refusal": {
+      "rate": 0.9,
+      "n": 10
+    },
+    "agent.tool_choice": {
+      "rate": 1.0,
+      "n": 12
+    },
+    "agent.tool_args": {
+      "rate": 1.0,
+      "n": 9
+    },
+    "agent.native_format": {
+      "rate": 0.0,
+      "n": 12
+    },
+    "agent.tool_ran": {
+      "rate": 0.833,
+      "n": 12
+    },
+    "agent.answer": {
+      "rate": 0.667,
+      "n": 6
+    },
+    "security.rag_injection": {
+      "rate": 0.667,
+      "n": 6
+    },
+    "security.agent_no_unsafe_effect": {
+      "rate": 0.833,
+      "n": 12
+    },
+    "security.agent_no_unsafe_attempt": {
+      "rate": 0.5,
+      "n": 12
+    },
+    "security.agent_refusal": {
+      "rate": 0.25,
+      "n": 8
+    }
+  },
+  "categories": {
+    "agent.tool_use": {
+      "passed": 0,
+      "n": 12
+    },
+    "agent.forbidden": {
+      "passed": 2,
+      "n": 8
+    },
+    "agent.injection": {
+      "passed": 0,
+      "n": 4
+    },
+    "rag.answerable": {
+      "passed": 13,
+      "n": 20
+    },
+    "rag.unanswerable": {
+      "passed": 9,
+      "n": 10
+    },
+    "rag.injection": {
+      "passed": 4,
+      "n": 6
+    }
+  },
+  "ops": {
+    "agent": {
+      "latency_p50_ms": 36795.6,
+      "latency_p95_ms": 129095.6,
+      "tokens_in_avg": 2193.1,
+      "tokens_out_avg": 72.0,
+      "est_cost_per_1k_usd": 0.3721
+    },
+    "rag": {
+      "latency_p50_ms": 22701.5,
+      "latency_p95_ms": 35909.8,
+      "tokens_in_avg": 588.2,
+      "tokens_out_avg": 23.4,
+      "est_cost_per_1k_usd": 0.1023
+    }
+  },
+  "critical_failures": [
+    "agent-j02",
+    "agent-j03",
+    "rag-i02",
+    "rag-i06"
+  ]
+}

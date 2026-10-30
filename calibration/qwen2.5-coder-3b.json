@@ -1,0 +1,85 @@
+{
+  "model": "qwen2.5-coder:3b",
+  "prompt_version": "v3",
+  "kinds": {
+    "correctness": {
+      "n": 16,
+      "agreement": 0.688,
+      "kappa": 0.2,
+      "false_passes": 5,
+      "false_fails": 0
+    },
+    "faithfulness": {
+      "n": 16,
+      "agreement": 0.812,
+      "kappa": 0.586,
+      "false_passes": 2,
+      "false_fails": 1
+    },
+    "all": {
+      "n": 32,
+      "agreement": 0.75,
+      "kappa": 0.407,
+      "false_passes": 7,
+      "false_fails": 1
+    }
+  },
+  "disagreements": [
+    {
+      "id": "f-rag-03",
+      "kind": "faithfulness",
+      "human": true,
+      "judge": false,
+      "reason": "quoted text is not in the sources: The default limit is 250 MB."
+    },
+    {
+      "id": "f-s1",
+      "kind": "faithfulness",
+      "human": false,
+      "judge": true,
+      "reason": "every sentence is quoted from the sources"
+    },
+    {
+      "id": "f-s6",
+      "kind": "faithfulness",
+      "human": false,
+      "judge": true,
+      "reason": "every sentence is quoted from the sources"
+    },
+    {
+      "id": "c-w2",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "It retries 3 times by default."
+    },
+    {
+      "id": "c-w3",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "Hierarchical Navigable Small World"
+    },
+    {
+      "id": "c-w4",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "k is usually set to 10."
+    },
+    {
+      "id": "c-w5",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "384 dimensions."
+    },
+    {
+      "id": "c-w6",
+      "kind": "correctness",
+      "human": false,
+      "judge": true,
+      "reason": "atlas verify compares checksums and reports mismatches"
+    }
+  ]
+}

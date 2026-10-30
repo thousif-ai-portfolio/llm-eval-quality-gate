@@ -1,0 +1,36 @@
+{
+  "run_id": "1930e0139cb6",
+  "created_at": "2026-10-30T15:25:31+00:00",
+  "updated_at": "2026-10-30T15:25:31+00:00",
+  "label": "agent-llama3.2",
+  "dataset": "v1",
+  "fingerprint": "873d03c1f7d6",
+  "config": {
+    "label": "agent-llama3.2",
+    "dataset": "v1",
+    "rag": {
+      "url": "http://localhost:8000",
+      "project1": "../grounded-ai-knowledge-assistant",
+      "mode": "hybrid_rerank"
+    },
+    "agent": {
+      "project2": "../github-issue-coding-agent",
+      "model": "llama3.2:3b",
+      "prompt": "prompts/agent_v1.txt",
+      "max_steps": 3
+    },
+    "judge": {
+      "correctness_model": "llama3.2:3b",
+      "faithfulness_model": "qwen2.5-coder:3b"
+    },
+    "pricing": {
+      "input_per_mtok": 0.15,
+      "output_per_mtok": 0.6
+    }
+  },
+  "versions": {
+    "project1": "6bb9673",
+    "project2": "01e65c1",
+    "evalgate": ""
+  }
+}

@@ -1,0 +1,36 @@
+# Prompt x model comparison for Project 1's answering step.
+#
+# Every test is the exact message Project 1 sends its model for one dataset question (same
+# retrieved passages, same numbering), exported with scripts/export_promptfoo_tests.py.
+# Two system prompts are compared on two local models:
+#   strict:   Project 1's production prompt (answer only from sources, else "I don't know")
+#   friendly: a plausible "make it more helpful" rewrite that allows general knowledge
+#
+#   npx promptfoo@0.124.1 eval -c promptfoo/promptfooconfig.yaml
+description: Project 1 answer prompt x model comparison (dataset v1)
+
+prompts:
+  - id: file://prompts/strict.json
+    label: strict (production)
+  - id: file://prompts/friendly.json
+    label: friendly (candidate)
+
+providers:
+  - id: ollama:chat:llama3.2:3b
+    label: llama3.2:3b
+    config:
+      temperature: 0
+      num_predict: 300
+  - id: ollama:chat:qwen2.5-coder:3b
+    label: qwen2.5-coder:3b
+    config:
+      temperature: 0
+      num_predict: 300
+
+tests: file://tests.json
+
+evaluateOptions:
+  # One model call at a time: the laptop has 8 GB of RAM.
+  maxConcurrency: 1
+
+outputPath: output/results.json

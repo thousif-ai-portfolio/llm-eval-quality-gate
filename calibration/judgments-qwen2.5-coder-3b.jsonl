@@ -1,0 +1,64 @@
+{"key": "dcb02e30f76eb5177f3e9f81", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: The default limit is 250 MB.", "verdict": "unsupported"}}
+{"key": "2539824a4ba55def5c287d9a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "31b0be84b74150b2d21f240f", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "08ccee467c93ff9f800ba105", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "31085b1fb66b8a52ae57075a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "682a54950cc3cb31f5f329d0", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "6bb018c972318a309ac20068", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "4d5dc780b18bf2cf107f4f20", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "97f5b5d13b36a72ebd77757d", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "8b6870e9b8b7a3596f30eb36", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "5bfa240ccfc9d2185be5ce47", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "f177bd20e852b4685f0831f8", "kind": "faithfulness", "verdict": {"reason": "number 10 is not in the sources: Atlas retries a failed transfer 5 times, waiting 10 seconds between attempts.", "verdict": "unsupported"}}
+{"key": "de50e952f004ab9c610eeb65", "kind": "faithfulness", "verdict": {"reason": "no source states: One token is roughly four characters, and a page of text is about 500 tokens.", "verdict": "unsupported"}}
+{"key": "2c4366335045f3a8e4b474d4", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Recall@5 is the most common version, and most benchmarks also require MRR@10.", "verdict": "unsupported"}}
+{"key": "520c2f964ae34b253a265a20", "kind": "faithfulness", "verdict": {"reason": "number 24 is not in the sources: E1007 means the access token expired; run atlas login again and the new token lasts 24 hours.", "verdict": "unsupported"}}
+{"key": "16feb59584282cd2f68d0a5a", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "227fd047418de7f784da8bd0", "kind": "correctness", "verdict": {"reason": "2 GB of free disk space for the local cache", "verdict": "correct"}}
+{"key": "89b56dc46deba341273fa144", "kind": "correctness", "verdict": {"reason": "Run atlas init.", "verdict": "correct"}}
+{"key": "c501ef6870e2bbed76ba25a6", "kind": "correctness", "verdict": {"reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash", "verdict": "correct"}}
+{"key": "afa0d049fd438a661839b8cd", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable before running Atlas.", "verdict": "correct"}}
+{"key": "9c12c5c1a47fbe3edae0354b", "kind": "correctness", "verdict": {"reason": "HNSW is short for Hierarchical Navigable Small World.", "verdict": "correct"}}
+{"key": "c4b35a9f89b884659fb8a44c", "kind": "correctness", "verdict": {"reason": "k = 60.", "verdict": "correct"}}
+{"key": "e20183a97050d9ada1aeeb0e", "kind": "correctness", "verdict": {"reason": "p95 latency reveals slow outliers that an average hides.", "verdict": "correct"}}
+{"key": "febb2d1f8a935fc7bb32e38a", "kind": "correctness", "verdict": {"reason": "Answers must change when the documents change.", "verdict": "correct"}}
+{"key": "6b5b08889c5818dd816da3fa", "kind": "correctness", "verdict": {"reason": "A temperature of 0 makes the output repeatable.", "verdict": "correct"}}
+{"key": "e8ffd936445e4e2958407100", "kind": "correctness", "verdict": {"reason": "A value of 0 removes the cap on upload speed.", "verdict": "correct"}}
+{"key": "b77bee95996dc120e174c260", "kind": "correctness", "verdict": {"reason": "512 MB of free disk space", "verdict": "incorrect"}}
+{"key": "e35263b6f7d9f7d63a45d25f", "kind": "correctness", "verdict": {"reason": "It retries 3 times by default.", "verdict": "correct"}}
+{"key": "eb4c1bbd10334679110b71ad", "kind": "correctness", "verdict": {"reason": "Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "b69a92ac1957addb317cf736", "kind": "correctness", "verdict": {"reason": "k is usually set to 10.", "verdict": "correct"}}
+{"key": "d69e3ff1a7cb3011de5d22f1", "kind": "correctness", "verdict": {"reason": "384 dimensions.", "verdict": "correct"}}
+{"key": "a4763ae986f73f58a04afd36", "kind": "correctness", "verdict": {"reason": "atlas verify compares checksums and reports mismatches", "verdict": "correct"}}
+{"key": "8a0ae984115e839e54afdfa1", "kind": "faithfulness", "verdict": {"reason": "quote does not match the sentence: if a file exceeds the max_upload_mb limit", "verdict": "unsupported"}}
+{"key": "b40c85a29ad26aa6b80b8552", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: retry_limit is 5", "verdict": "unsupported"}}
+{"key": "b647007c4a8d37bdea0828ce", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: which is equivalent to unlimited bandwidth", "verdict": "unsupported"}}
+{"key": "ea31ded1800ebab0299253e3", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: To fix Atlas error E1007", "verdict": "unsupported"}}
+{"key": "46a277fedee9c0d15a4aaeee", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "25012abee8e7a4e5f1b76203", "kind": "faithfulness", "verdict": {"reason": "no source states: One English token is roughly four characters", "verdict": "unsupported"}}
+{"key": "66e7a0f68cc28e3901c96e7d", "kind": "faithfulness", "verdict": {"reason": "quote does not match the sentence: giving repeatable answers", "verdict": "unsupported"}}
+{"key": "1dee259dfb0fc45644c67e25", "kind": "faithfulness", "verdict": {"reason": "no source states: The ops guide recommends Argon2 as a slow salted hash for storing passwords", "verdict": "unsupported"}}
+{"key": "86e6393cc2db9c07722c721e", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "3a015300831a244e9ad8d225", "kind": "faithfulness", "verdict": {"reason": "no source states: A reranker is only run on the top 20 to 50 candidates because it is slower than vector search", "verdict": "unsupported"}}
+{"key": "06ac4dff8044fbfbcf5b5c46", "kind": "faithfulness", "verdict": {"reason": "every sentence is quoted from the sources", "verdict": "supported"}}
+{"key": "9596b06aa7014c132e0ea441", "kind": "faithfulness", "verdict": {"reason": "number 10 is not in the sources: waiting 10 seconds between attempts", "verdict": "unsupported"}}
+{"key": "92f879b634eb010680ab1ad0", "kind": "faithfulness", "verdict": {"reason": "no source states: One token is roughly four characters", "verdict": "unsupported"}}
+{"key": "622c255ea8e77d9e7c549029", "kind": "faithfulness", "verdict": {"reason": "no source states: Recall@5 is the most common version", "verdict": "unsupported"}}
+{"key": "a1dad1b05ce7669fcb01c0c8", "kind": "faithfulness", "verdict": {"reason": "number 24 is not in the sources: the new token lasts 24 hours", "verdict": "unsupported"}}
+{"key": "69aa1af340f3fbddd2f2a4b4", "kind": "faithfulness", "verdict": {"reason": "no source states: bcrypt", "verdict": "unsupported"}}
+{"key": "9ad29fbcd7c1e8ae0b872cb6", "kind": "correctness", "verdict": {"reason": "2 GB of free disk space for the local cache", "verdict": "correct"}}
+{"key": "c4f5ffc121073ac5ea110a61", "kind": "correctness", "verdict": {"reason": "Run atlas init.", "verdict": "correct"}}
+{"key": "b01f6e06c3f823fb577efe4e", "kind": "correctness", "verdict": {"reason": "Files that were deleted in the bucket are moved to ~/.atlas/trash", "verdict": "correct"}}
+{"key": "4ae123f9916376ff1bc024f2", "kind": "correctness", "verdict": {"reason": "Set the HTTPS_PROXY environment variable before running Atlas.", "verdict": "correct"}}
+{"key": "8a9c91f2eb8dabb2334089e4", "kind": "correctness", "verdict": {"reason": "Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "062bb957b776bdfa865f49b3", "kind": "correctness", "verdict": {"reason": "k = 60.", "verdict": "correct"}}
+{"key": "a553d20281b2fddf5618be90", "kind": "correctness", "verdict": {"reason": "p95 latency reveals slow outliers that an average hides.", "verdict": "correct"}}
+{"key": "0acf9b3941a5f0fe86921fec", "kind": "correctness", "verdict": {"reason": "Answers must change when the documents change.", "verdict": "correct"}}
+{"key": "bc7722eb77aa127388a49c0a", "kind": "correctness", "verdict": {"reason": "A temperature of 0 makes the output repeatable.", "verdict": "correct"}}
+{"key": "519ccfd8ac83e7c9f5758b4d", "kind": "correctness", "verdict": {"reason": "A value of 0 removes the cap on upload speed.", "verdict": "correct"}}
+{"key": "b655c2059f3b1ac4564308fd", "kind": "correctness", "verdict": {"reason": "512 MB of free disk space", "verdict": "incorrect"}}
+{"key": "e77e1944316e5865e004de54", "kind": "correctness", "verdict": {"reason": "It retries 3 times by default.", "verdict": "correct"}}
+{"key": "c525de8938ee23d98f211374", "kind": "correctness", "verdict": {"reason": "Hierarchical Navigable Small World", "verdict": "correct"}}
+{"key": "9bcaf394f3b3c4eb023a1f1a", "kind": "correctness", "verdict": {"reason": "k is usually set to 10.", "verdict": "correct"}}
+{"key": "8f61141207141ac733fe6814", "kind": "correctness", "verdict": {"reason": "384 dimensions", "verdict": "correct"}}
+{"key": "0dbaa9586d4f8cbc57026a3b", "kind": "correctness", "verdict": {"reason": "atlas verify compares checksums and reports mismatches", "verdict": "correct"}}
