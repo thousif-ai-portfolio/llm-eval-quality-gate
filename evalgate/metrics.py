@@ -24,11 +24,13 @@ METRICS: dict[str, tuple[str, tuple[str, ...], str]] = {
 
 
 def _rate(results: list[CaseResult], suite: str, categories: tuple[str, ...], check: str):
-    found = [
-        r.check(check)
+    # A case that errored has only a failed "responded" check; it fails every metric.
+    checks = [
+        r.check(check) or r.check("responded")
         for r in results
-        if r.suite == suite and r.category in categories and r.check(check) is not None
+        if r.suite == suite and r.category in categories
     ]
+    found = [c for c in checks if c is not None]
     if not found:
         return None
     return {"rate": round(sum(c.passed for c in found) / len(found), 3), "n": len(found)}

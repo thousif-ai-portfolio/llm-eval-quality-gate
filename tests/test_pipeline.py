@@ -2,12 +2,14 @@
 
 import json
 
+import anyio
 import pytest
 
-from evalgate import dataset, runner
+from evalgate import dataset, metrics, runner
 from evalgate.judge import Judge, JudgeCacheMiss, Label, Verdict, calibrate, cohen_kappa
+from evalgate.models import Case, Response
 from evalgate.store import History
-from tests.conftest import FakeJudge, answer, calls
+from tests.conftest import FakeJudge, answer, calls, rag_case
 
 
 @pytest.fixture
@@ -59,6 +61,41 @@ def test_rescoring_a_recorded_run_gives_metrics_and_history(recorded_run, tmp_pa
     [row] = History(tmp_path / "history.db").runs()
     assert row["label"] == "test" and row["summary"]["cases"] == 5
     assert len(runner.load_results(recorded_run)) == 5
+
+
+def test_an_errored_case_fails_every_metric_it_belongs_to():
+    errored = runner.score_case(
+        rag_case(), Response(case_id="rag-answerable", error="HTTP 500"), None
+    )
+    good = runner.score_case(
+        rag_case(), answer("Run atlas init [1].", ("manual.pdf", 1)), FakeJudge()
+    )
+    m = metrics.summarise([errored, good], {})["metrics"]
+    assert m["rag.citations"] == {"rate": 0.5, "n": 2}
+    assert m["rag.correctness"] == {"rate": 0.5, "n": 2}
+
+
+def test_i_dont_know_to_an_answerable_question_is_incorrect_without_asking_the_judge():
+    result = runner.score_case(rag_case(), answer("I don't know."), judge=object())
+    assert result.check("correct").passed is False and result.check("faithful") is None
+
+
+def test_one_crashing_case_is_recorded_as_an_error_and_the_run_goes_on():
+    class Flaky:
+        async def __aenter__(self):
+            return self
+
+        async def __aexit__(self, *exc):
+            return None
+
+        async def respond(self, case):
+            if case.id == "a":
+                raise KeyError("answer")
+            return Response(case_id=case.id, output="ok")
+
+    cases = [Case(id=i, suite="rag", category="answerable", input="q") for i in "ab"]
+    responses = anyio.run(runner._collect, cases, Flaky(), lambda *_: None)
+    assert [(r.case_id, r.error) for r in responses] == [("a", "KeyError: 'answer'"), ("b", "")]
 
 
 def test_offline_judge_without_a_recorded_verdict_refuses_to_guess(tmp_path):

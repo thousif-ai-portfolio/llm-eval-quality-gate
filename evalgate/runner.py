@@ -24,7 +24,7 @@ from evalgate.judge import Judge
 from evalgate.models import Case, CaseResult, Check, Response
 from evalgate.scorers import score
 from evalgate.store import History
-from evalgate.targets import AgentTarget, RagTarget, ReplayTarget, Target
+from evalgate.targets import AgentTarget, RagTarget, Target
 
 ROOT = dataset.ROOT
 HISTORY = ROOT / "data" / "history.db"
@@ -82,15 +82,19 @@ def make_target(suite: str, config: dict) -> Target:
 
 
 def score_case(case: Case, response: Response, judge: Judge | None) -> CaseResult:
-    """Rule checks, plus the judge's checks for answered RAG questions (skipped when
+    """Rule checks, plus the judge's checks for answerable RAG questions (skipped when
     judge is None, e.g. for live progress lines before the judge runs)."""
     checks = score(case, response)
-    answered = case.category == "answerable" and not response.error
-    if judge and answered and all(c.passed for c in checks if c.name == "answered"):
-        correct = judge.correctness(case.input, case.expect.get("reference", ""), response.output)
-        checks.append(Check(name="correct", passed=correct.passed, detail=correct.reason))
-        faithful = judge.faithfulness(response.output, [c.text for c in response.citations])
-        checks.append(Check(name="faithful", passed=faithful.passed, detail=faithful.reason))
+    if judge and case.category == "answerable" and not response.error:
+        if not all(c.passed for c in checks if c.name == "answered"):
+            # "I don't know" to an answerable question is wrong; no judge needed.
+            checks.append(Check(name="correct", passed=False, detail="said it does not know"))
+        else:
+            reference = case.expect.get("reference", "")
+            correct = judge.correctness(case.input, reference, response.output)
+            checks.append(Check(name="correct", passed=correct.passed, detail=correct.reason))
+            faithful = judge.faithfulness(response.output, [c.text for c in response.citations])
+            checks.append(Check(name="faithful", passed=faithful.passed, detail=faithful.reason))
     return CaseResult(
         case_id=case.id,
         suite=case.suite,
@@ -118,7 +122,10 @@ async def _collect(cases: list[Case], target: Target, on_done) -> list[Response]
     responses = []
     async with target:
         for case in cases:
-            response = await target.respond(case)
+            try:
+                response = await target.respond(case)
+            except Exception as exc:  # one broken case must not lose an hour-long run
+                response = Response(case_id=case.id, error=f"{type(exc).__name__}: {exc}")
             responses.append(response)
             on_done(case, response)
     return responses
@@ -192,8 +199,7 @@ def rescore(out: Path, offline: bool = True, history: Path | None = HISTORY) -> 
         offline=offline,
         faithfulness_model=config["judge"]["faithfulness_model"],
     )
-    target = ReplayTarget(out / "responses.jsonl")
-    results = [score_case(c, anyio.run(target.respond, c), judge) for c in cases]
+    results = [score_case(c, responses[c.id], judge) for c in cases]
     _write_jsonl(out / "results.jsonl", results)
     pricing = config.get("pricing", {})
     summary = {

@@ -36,3 +36,5 @@
 {"key": "7c2098144836b82b112901d5", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: This is because the cached answer might not reflect the latest updates or correc", "verdict": "unsupported"}}
 {"key": "6bcf5c4d0e3d694a8b808264", "kind": "correctness", "verdict": {"reason": "Recall@5", "verdict": "correct"}}
 {"key": "f34e2a6fc8ced1ee7b5ceb17", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: Recall@5 is the most common version of Recall@k used.", "verdict": "unsupported"}}
+{"key": "a7a51e84574f13b0320558d2", "kind": "correctness", "verdict": {"reason": "larger files are skipped with a warning", "verdict": "correct"}}
+{"key": "c4e1b519fe4b5311537c21e9", "kind": "faithfulness", "verdict": {"reason": "quoted text is not in the sources: larger files are skipped with a warning when it is set to aes256", "verdict": "unsupported"}}

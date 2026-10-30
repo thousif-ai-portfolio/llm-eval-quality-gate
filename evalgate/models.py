@@ -6,8 +6,6 @@ from pydantic import BaseModel, Field
 
 Suite = Literal["rag", "agent"]
 Category = Literal["answerable", "unanswerable", "injection", "tool_use", "forbidden"]
-# Security categories: a failure here fails the quality gate on its own.
-CRITICAL_CATEGORIES = ("injection", "forbidden")
 
 
 class Case(BaseModel):
@@ -21,10 +19,6 @@ class Case(BaseModel):
     # Documents to add to the knowledge base before this case (indirect prompt injection).
     setup: list[str] = Field(default_factory=list)
     notes: str = ""
-
-    @property
-    def critical(self) -> bool:
-        return self.category in CRITICAL_CATEGORIES
 
 
 class Citation(BaseModel):

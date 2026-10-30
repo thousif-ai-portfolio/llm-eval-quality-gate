@@ -2,15 +2,14 @@
 
 - RagTarget: Project 1 (grounded-ai-knowledge-assistant) through its HTTP API.
 - AgentTarget: a tool-calling model driving Project 2's real MCP tool server.
-- ReplayTarget: recorded responses, so CI can re-score a run without any model.
-- MockTarget: canned responses for unit tests.
+
+CI needs neither: it re-scores the recorded responses (runner.rescore).
 """
 
 import json
 import os
 import re
 import time
-from collections.abc import Callable
 from contextlib import AsyncExitStack
 from pathlib import Path
 from typing import Any, Protocol
@@ -38,48 +37,6 @@ class TargetError(RuntimeError):
 
 def _elapsed_ms(start: float) -> float:
     return round((time.perf_counter() - start) * 1000, 1)
-
-
-# --- Replay and mock ---------------------------------------------------------------------
-
-
-class ReplayTarget:
-    """Returns the responses recorded in an earlier run, keyed by case id."""
-
-    name = "replay"
-
-    def __init__(self, responses_file: Path) -> None:
-        lines = responses_file.read_text(encoding="utf-8").splitlines()
-        self._responses = {r.case_id: r for r in map(Response.model_validate_json, lines) if r}
-
-    async def __aenter__(self) -> "ReplayTarget":
-        return self
-
-    async def __aexit__(self, *exc: object) -> None:
-        return None
-
-    async def respond(self, case: Case) -> Response:
-        if case.id not in self._responses:
-            raise TargetError(f"No recorded response for {case.id}; re-run the evaluation.")
-        return self._responses[case.id]
-
-
-class MockTarget:
-    """Answers from a function, for tests of the harness itself."""
-
-    name = "mock"
-
-    def __init__(self, answer: Callable[[Case], Response]) -> None:
-        self._answer = answer
-
-    async def __aenter__(self) -> "MockTarget":
-        return self
-
-    async def __aexit__(self, *exc: object) -> None:
-        return None
-
-    async def respond(self, case: Case) -> Response:
-        return self._answer(case)
 
 
 # --- Project 1: RAG over HTTP ------------------------------------------------------------
@@ -171,10 +128,13 @@ class RagTarget:
 def _text_tool_calls(content: str) -> list[ToolCall]:
     """Small models often write the call as JSON in their reply instead of using the API's
     tool-call format. Those are still parsed (and executed) but marked format="text"."""
-    calls = []
-    for match in re.finditer(r"\{.*\}", content, re.DOTALL):
+    calls, decoder, end = [], json.JSONDecoder(), 0
+    # Every JSON object or list in the reply, so two calls in one message are both found.
+    for match in re.finditer(r"[{\[]", content):
+        if match.start() < end:
+            continue
         try:
-            data = json.loads(match.group(0))
+            data, end = decoder.raw_decode(content, match.start())
         except json.JSONDecodeError:
             continue
         for item in data if isinstance(data, list) else [data]:
@@ -202,7 +162,6 @@ class AgentTarget:
         model: str,
         system_prompt: str,
         max_steps: int = 3,
-        ollama_host: str | None = None,
         timeout_s: float = 300,
         session: Any = None,
         client: Any = None,
@@ -210,10 +169,9 @@ class AgentTarget:
         """`session` and `client` stand in for the MCP server and Ollama in tests."""
         self._project2, self._model, self._system = project2, model, system_prompt
         self._max_steps, self._timeout_s = max_steps, timeout_s
-        host = ollama_host or os.environ.get("OLLAMA_HOST")
         # A per-request HTTP timeout as well as the per-case limit below, so a stalled
         # model connection cannot hold up a run.
-        self._ollama = client or ollama.AsyncClient(host=host, timeout=180)
+        self._ollama = client or ollama.AsyncClient(host=os.environ.get("OLLAMA_HOST"), timeout=180)
         self._stack = AsyncExitStack()
         self._session = session
         self._tools: list[dict] = []

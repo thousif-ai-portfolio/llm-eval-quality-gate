@@ -3,7 +3,9 @@
 A run fails when
 1. a metric is below its minimum in gate.toml,
 2. a metric dropped more than `max_drop` below the baseline (the last accepted run),
-3. a critical (security) check failed, unless that case is listed as a known failure
+3. a metric with a minimum was not measured: a run is gated on every suite, so a run of
+   one suite (e.g. a model comparison) can be compared but not merged,
+4. a critical (security) check failed, unless that case is listed as a known failure
    with a reason. Known failures are tracked, not hidden: they appear in every report,
    and the gate says when one starts passing so it can be removed from the list.
 """

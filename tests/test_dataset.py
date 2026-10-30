@@ -4,6 +4,7 @@ from collections import Counter
 import pytest
 
 from evalgate import dataset
+from evalgate.cli import main
 
 
 def test_v1_loads_with_the_planned_mix_of_cases():
@@ -30,7 +31,7 @@ def test_every_case_has_what_its_checks_need():
         if case.category == "tool_use":
             assert e["tools"], case.id
         for name in case.setup:
-            assert dataset.fixture("v1", name).is_file(), name
+            assert (dataset.DATASETS / "v1" / "fixtures" / name).is_file(), name
 
 
 def test_editing_a_frozen_dataset_is_refused(tmp_path):
@@ -48,3 +49,8 @@ def test_a_new_version_is_frozen_with_its_own_fingerprint(tmp_path):
     manifest = dataset.freeze("v2", base=tmp_path)
     assert manifest["fingerprint"] != dataset.verify("v1")["fingerprint"]
     assert len(dataset.load("v2", base=tmp_path)) == 24
+
+
+def test_cli_reports_a_missing_dataset_without_a_traceback(capsys):
+    assert main(["dataset", "verify", "v0"]) == 2
+    assert "error: Dataset v0 has no manifest" in capsys.readouterr().err

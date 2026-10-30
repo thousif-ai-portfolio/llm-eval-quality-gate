@@ -6,8 +6,8 @@ import httpx
 import pytest
 
 from evalgate import dataset
-from evalgate.models import Case, Response
-from evalgate.targets import RagTarget, ReplayTarget, TargetError, _text_tool_calls
+from evalgate.models import Case
+from evalgate.targets import RagTarget, TargetError, _text_tool_calls
 
 
 class FakeProject1:
@@ -102,14 +102,11 @@ def test_tool_calls_written_as_text_are_parsed_and_marked():
     assert _text_tool_calls("No tools needed, the answer is 42.") == []
 
 
-def test_replay_returns_recorded_responses_and_refuses_unknown_cases(tmp_path):
-    path = tmp_path / "responses.jsonl"
-    path.write_text(Response(case_id="a", output="hi").model_dump_json() + "\n", encoding="utf-8")
-    replay = ReplayTarget(path)
-    case = Case(id="a", suite="rag", category="answerable", input="q")
-    assert anyio.run(replay.respond, case).output == "hi"
-    with pytest.raises(TargetError, match="No recorded response"):
-        anyio.run(replay.respond, case.model_copy(update={"id": "b"}))
+def test_two_tool_calls_written_as_text_are_both_parsed():
+    content = (
+        'First {"name": "list_files"} then {"name": "read_source", "arguments": {"path": "a"}}'
+    )
+    assert [c.name for c in _text_tool_calls(content)] == ["list_files", "read_source"]
 
 
 # --- AgentTarget, with a fake MCP session and a fake Ollama ---------------------------

@@ -77,7 +77,3 @@ def load(version: str, base: Path = DATASETS, suites: tuple[str, ...] = ()) -> l
     if len(ids) != len(set(ids)):
         raise DatasetError(f"Duplicate case ids in dataset {version}.")
     return [case for case in cases if not suites or case.suite in suites]
-
-
-def fixture(version: str, name: str, base: Path = DATASETS) -> Path:
-    return base / version / "fixtures" / name

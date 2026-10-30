@@ -145,8 +145,8 @@ def decide(reply: BaseModel, **inputs: str) -> Verdict:
             verdict="unsupported" if problem else "supported",
             reason=problem or "every sentence is quoted from the sources",
         )
-    data = reply.model_dump()
-    return Verdict(verdict=data.pop("verdict"), reason=str(next(iter(data.values()), "")))
+    assert isinstance(reply, CorrectnessReply)
+    return Verdict(verdict=reply.verdict, reason=reply.key_fact_found)
 
 
 class JudgeCacheMiss(KeyError):
@@ -168,6 +168,8 @@ class Judge:
         self._cache: dict[str, Verdict] = {}
         if cache_file.is_file():
             for line in cache_file.read_text(encoding="utf-8").splitlines():
+                if not line.strip():
+                    continue
                 entry = json.loads(line)
                 self._cache[entry["key"]] = Verdict.model_validate(entry["verdict"])
         self._client = None if offline else ollama.Client()

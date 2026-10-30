@@ -23,8 +23,9 @@ import httpx
 
 from evalgate import dataset, report, runner
 from evalgate.gate import evaluate, load_gate
-from evalgate.judge import Judge, Label, calibrate
+from evalgate.judge import Judge, JudgeCacheMiss, Label, calibrate
 from evalgate.store import History
+from evalgate.targets import TargetError
 
 ROOT = dataset.ROOT
 
@@ -202,7 +203,11 @@ def main(argv: list[str] | None = None) -> int:
     p.set_defaults(func=cmd_setup_rag_user)
 
     args = parser.parse_args(argv)
-    return args.func(args)
+    try:
+        return args.func(args)
+    except (dataset.DatasetError, JudgeCacheMiss, TargetError) as exc:
+        print(f"error: {exc.args[0] if exc.args else exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

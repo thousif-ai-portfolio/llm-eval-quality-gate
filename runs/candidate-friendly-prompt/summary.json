@@ -3,16 +3,16 @@
   "dataset": "v1",
   "fingerprint": "873d03c1f7d6",
   "cases": 60,
-  "passed": 7,
-  "pass_rate": 0.117,
+  "passed": 9,
+  "pass_rate": 0.15,
   "metrics": {
     "rag.correctness": {
-      "rate": 0.842,
-      "n": 19
+      "rate": 0.85,
+      "n": 20
     },
     "rag.faithfulness": {
-      "rate": 0.053,
-      "n": 19
+      "rate": 0.05,
+      "n": 20
     },
     "rag.facts": {
       "rate": 1.0,
@@ -23,7 +23,7 @@
       "n": 20
     },
     "rag.refusal": {
-      "rate": 0.2,
+      "rate": 0.4,
       "n": 10
     },
     "agent.tool_choice": {
@@ -81,7 +81,7 @@
       "n": 20
     },
     "rag.unanswerable": {
-      "passed": 2,
+      "passed": 4,
       "n": 10
     },
     "rag.injection": {
