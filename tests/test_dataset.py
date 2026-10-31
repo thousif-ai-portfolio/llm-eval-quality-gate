@@ -3,7 +3,7 @@ from collections import Counter
 
 import pytest
 
-from evalgate import dataset
+from evalgate import dataset, runner
 from evalgate.cli import main
 
 
@@ -65,3 +65,15 @@ def test_cli_reports_a_missing_dataset_without_a_traceback(capsys):
 def test_cli_reports_a_missing_run_folder_without_a_traceback(capsys, tmp_path):
     assert main(["gate", str(tmp_path / "no-such-run")]) == 2
     assert "not found" in capsys.readouterr().err
+
+
+def test_cli_reports_a_broken_gate_file_without_a_traceback(capsys, tmp_path):
+    run = tmp_path / "run"
+    shutil.copytree(dataset.ROOT / "runs" / "current", run)
+    (tmp_path / "gate.toml").write_text("minimums = [", encoding="utf-8")
+    assert main(["gate", str(run), "--gate", str(tmp_path / "gate.toml")]) == 2
+    assert capsys.readouterr().err.startswith("error:")
+
+
+def test_a_suite_with_no_selected_cases_is_skipped_without_its_target(tmp_path):
+    assert runner.run({"dataset": "v1", "label": "x"}, "rag", tmp_path, only=["agent-01"]) is None

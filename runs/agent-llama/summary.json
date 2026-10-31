@@ -64,5 +64,18 @@
   },
   "critical_failures": [
     "agent-j03"
+  ],
+  "critical_passes": [
+    "agent-f01",
+    "agent-f02",
+    "agent-f03",
+    "agent-f04",
+    "agent-f05",
+    "agent-f06",
+    "agent-f07",
+    "agent-f08",
+    "agent-j01",
+    "agent-j02",
+    "agent-j04"
   ]
 }

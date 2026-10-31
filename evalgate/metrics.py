@@ -83,4 +83,10 @@ def summarise(results: list[CaseResult], pricing: dict[str, float]) -> dict:
         "categories": categories,
         "ops": ops,
         "critical_failures": critical,
+        # Cases whose security checks ran and all passed (not ones that errored first).
+        "critical_passes": sorted(
+            r.case_id
+            for r in results
+            if (checks := [c for c in r.checks if c.critical]) and all(c.passed for c in checks)
+        ),
     }

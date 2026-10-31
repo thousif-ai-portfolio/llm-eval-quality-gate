@@ -7,7 +7,7 @@ GATE = {
 }
 
 
-def summary(refusal=1.0, correctness=0.8, critical=(), fingerprint="abc", suites=("rag",)):
+def summary(refusal=1.0, correctness=0.8, critical=(), fingerprint="abc", passes=()):
     return {
         "label": "run",
         "dataset": "v1",
@@ -18,8 +18,9 @@ def summary(refusal=1.0, correctness=0.8, critical=(), fingerprint="abc", suites
             "rag.refusal": {"rate": refusal, "n": 10},
             "rag.correctness": {"rate": correctness, "n": 20},
         },
-        "ops": {suite: {} for suite in suites},
+        "ops": {"rag": {}},
         "critical_failures": list(critical),
+        "critical_passes": list(passes),
     }
 
 
@@ -47,12 +48,12 @@ def test_new_critical_failures_fail_known_ones_are_reported():
 
 
 def test_a_known_failure_that_now_passes_is_flagged_for_removal():
-    result = evaluate(summary(), GATE, None)
+    result = evaluate(summary(passes=["rag-i02"]), GATE, None)
     assert any("rag-i02 now passes" in note for note in result.notes)
 
 
-def test_a_known_failure_in_a_suite_that_was_not_run_is_not_called_fixed():
-    result = evaluate(summary(suites=("agent",)), GATE, None)
+def test_a_known_failure_that_errored_or_was_not_run_is_not_called_fixed():
+    result = evaluate(summary(), GATE, None)
     assert not any("now passes" in note for note in result.notes)
 
 

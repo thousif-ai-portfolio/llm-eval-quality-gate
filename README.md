@@ -304,7 +304,7 @@ cd .. && python scripts/summarize_promptfoo.py
 ## Tests
 
 ```bash
-pytest          # 75 tests: scorers, gate, dataset versioning, targets, tracing, pipeline
+pytest          # 78 tests: scorers, gate, dataset versioning, targets, tracing, pipeline
 ruff check . && ruff format --check .
 ```
 

@@ -1,3 +1,4 @@
+import pytest
 from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 from opentelemetry.sdk.trace.export.in_memory_span_exporter import InMemorySpanExporter
@@ -62,3 +63,8 @@ def test_agent_trace_has_a_span_per_tool_call():
     assert spans["agent-tool_use [tool_use]"].status.status_code is StatusCode.OK
     assert spans["tool: read_source"].status.status_code is StatusCode.ERROR
     assert spans["tool: search_code"].attributes["tool.parameters"] == '{"query": "x"}'
+
+
+def test_an_unreachable_collector_is_an_error_not_a_silent_success():
+    with pytest.raises(tracing.TracingError, match="is Phoenix running"):
+        tracing.setup("http://127.0.0.1:9/v1/traces", "p")

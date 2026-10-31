@@ -74,13 +74,10 @@ def evaluate(summary: dict, gate: dict, baseline: dict | None) -> GateResult:
             result.notes.append(f"Known critical failure {case_id}: {known[case_id]}")
         else:
             result.failures.append(f"Critical security check failed in {case_id}")
-    # Case ids start with their suite ("rag-i02"); a suite that wasn't run proves nothing.
-    suites_run = set(summary["ops"])
-    for case_id in sorted(set(known) - set(summary["critical_failures"])):
-        if case_id.split("-")[0] in suites_run:
-            result.notes.append(
-                f"{case_id} now passes; remove it from known_failures in gate.toml."
-            )
+    # Only a case whose security checks ran and passed is fixed; one that errored or was
+    # not in this run proves nothing.
+    for case_id in sorted(set(known) & set(summary["critical_passes"])):
+        result.notes.append(f"{case_id} now passes; remove it from known_failures in gate.toml.")
 
     result.passed = not result.failures
     return result

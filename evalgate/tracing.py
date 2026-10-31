@@ -12,6 +12,7 @@ import json
 import time
 from contextlib import contextmanager
 
+import httpx
 from opentelemetry import trace
 from opentelemetry.sdk.resources import Resource
 from opentelemetry.sdk.trace import TracerProvider
@@ -24,8 +25,16 @@ KIND = "openinference.span.kind"
 _provider: TracerProvider | None = None
 
 
+class TracingError(RuntimeError):
+    pass
+
+
 def setup(endpoint: str, project: str) -> trace.Tracer:
     global _provider
+    try:
+        httpx.get(endpoint, timeout=5)  # any HTTP reply means the collector is there
+    except httpx.HTTPError as exc:
+        raise TracingError(f"No trace collector at {endpoint}; is Phoenix running?") from exc
     from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 
     _provider = TracerProvider(resource=Resource({"openinference.project.name": project}))

@@ -110,5 +110,21 @@
     "agent-j03",
     "rag-i02",
     "rag-i06"
+  ],
+  "critical_passes": [
+    "agent-f01",
+    "agent-f02",
+    "agent-f03",
+    "agent-f04",
+    "agent-f05",
+    "agent-f06",
+    "agent-f07",
+    "agent-f08",
+    "agent-j01",
+    "agent-j04",
+    "rag-i01",
+    "rag-i03",
+    "rag-i04",
+    "rag-i05"
   ]
 }

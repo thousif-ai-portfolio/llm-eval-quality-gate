@@ -26,6 +26,7 @@ from evalgate.gate import evaluate, load_gate
 from evalgate.judge import Judge, JudgeCacheMiss, Label, calibrate
 from evalgate.store import History
 from evalgate.targets import TargetError
+from evalgate.tracing import TracingError
 
 ROOT = dataset.ROOT
 
@@ -38,9 +39,12 @@ def cmd_run(args) -> int:
     config = runner.load_config(args.config)
     out = args.out or ROOT / "runs" / config["label"]
     suites = ["rag", "agent"] if args.suite == "all" else [args.suite]
+    summary = None
     for suite in suites:
-        print(f"== {suite} suite: {config['label']} ==")
-        summary = runner.run(config, suite, out, args.only)
+        summary = runner.run(config, suite, out, args.only) or summary
+    if summary is None:
+        print("No case matches --only.")
+        return 2
     print(f"\n{summary['passed']}/{summary['cases']} cases passed. Saved to {out}")
     return 0
 
@@ -203,9 +207,11 @@ def main(argv: list[str] | None = None) -> int:
     p.set_defaults(func=cmd_setup_rag_user)
 
     args = parser.parse_args(argv)
+    # The reports contain ✅/❌, which a Windows console or redirected output can't encode.
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     try:
         return args.func(args)
-    except (dataset.DatasetError, JudgeCacheMiss, TargetError) as exc:
+    except (ValueError, JudgeCacheMiss, TargetError, TracingError) as exc:
         print(f"error: {exc.args[0] if exc.args else exc}", file=sys.stderr)
         return 2
     except FileNotFoundError as exc:

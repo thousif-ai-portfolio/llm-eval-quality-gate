@@ -136,7 +136,7 @@ def run(
     out: Path,
     only: list[str] | None = None,
     progress=print,
-) -> dict:
+) -> dict | None:
     """Runs one suite live and merges its responses into the run folder `out`. The judge
     runs once at the end rather than between answers, so Ollama doesn't swap models on a
     small machine for every question."""
@@ -145,6 +145,9 @@ def run(
         cases = [c for c in cases if c.id in only]
     # Cases that share fixture documents run together, so each is uploaded once.
     cases.sort(key=lambda c: (tuple(c.setup), c.id))
+    if not cases:
+        return None
+    progress(f"== {suite} suite: {config['label']} ==")
     out.mkdir(parents=True, exist_ok=True)
 
     def done(case: Case, response: Response) -> None:
