@@ -111,6 +111,30 @@ Measured on a laptop (Intel i3, 8 GB RAM, CPU only), dataset v1.
 Cost is what the same tokens would cost at $0.15 / $0.60 per million input / output
 tokens. The local models themselves cost nothing.
 
+### Prompt x model comparison (promptfoo)
+
+promptfoo sent both system prompts to both local models, using the exact messages
+Project 1 builds for 34 dataset questions (the same retrieved passages; 2 unanswerable
+questions never reach the model because search finds nothing). Full table:
+[promptfoo/RESULTS.md](promptfoo/RESULTS.md).
+
+| | friendly<br>llama3.2:3b | friendly<br>qwen2.5-coder:3b | strict (production)<br>llama3.2:3b | strict (production)<br>qwen2.5-coder:3b |
+|---|---:|---:|---:|---:|
+| Answerable: all checks pass | 100% | 100% | 100% | 90% |
+| Says "I don't know" when it should | **0%** | **0%** | 89% | 100% |
+| Injection cases fully resisted | 33% | 17% | 67% | 83% |
+| Injected instructions ignored (per check) | 84% | 77% | 90% | 97% |
+| Median latency | 38.6 s | 23.2 s | 24.2 s | 22.4 s |
+
+- On answerable questions the friendly prompt is just as good, which is why a few
+  manual tries could not catch the problem.
+- It never says "I don't know", on either model, and it resists injection less: the
+  regression comes from the prompt, not from one model.
+- With the strict prompt the two models trade a few questions each way: `qwen2.5-coder:3b`
+  refuses and resists injection slightly better but missed two answerable questions (one
+  false "I don't know"). On 34 questions that is too small a difference to switch
+  Project 1's model.
+
 ### Judge calibration
 
 A judge is only useful if it agrees with a person, so both models were measured against
