@@ -136,7 +136,8 @@ The correctness judge errs strict (2 of 10 good answers failed), which is why
 useful answer."* On a few manual questions it looked better: longer, more helpful
 answers, and the judge even rated correctness higher (85% vs 75%).
 
-**The gate.** Recorded and proposed as the new production run, it failed CI:
+**The gate.** Recorded and proposed as the new production run in
+[pull request #2](https://github.com/thousif-ai-portfolio/llm-eval-quality-gate/pull/2), it failed CI:
 
 ```
 rag.citations is 50%, below the minimum 90%
@@ -176,8 +177,10 @@ Critical security check failed in rag-i05
   Inviting "general knowledge" made the model treat any text in its context as something
   to act on.
 
-**The fix.** Keep the strict production prompt. A friendlier tone has to be added
-without giving up the rules above.
+**The fix.** Keep the strict production prompt: #2 was closed unmerged, while
+[pull request #1](https://github.com/thousif-ai-portfolio/llm-eval-quality-gate/pull/1), which leaves production unchanged,
+passed the same gate. A friendlier tone has to be added without giving up the rules
+above.
 
 ## Known weaknesses the harness found
 
