@@ -3,7 +3,7 @@
 One trace per case: the case span holds the question, the answer and every check result,
 with an LLM, retriever or tool span under it. Failed cases get an ERROR status, so in
 Phoenix they can be filtered and opened to see what the system retrieved or called.
-Tracing is off unless an endpoint is given (e.g. http://127.0.0.1:6006/v1/traces).
+Traces go to an OTLP endpoint (e.g. http://127.0.0.1:6006/v1/traces).
 Each run goes to its own Phoenix project, and spans get the latency recorded in the run,
 so Phoenix shows how long each case really took.
 """
@@ -24,10 +24,8 @@ KIND = "openinference.span.kind"
 _provider: TracerProvider | None = None
 
 
-def setup(endpoint: str | None, project: str) -> trace.Tracer:
+def setup(endpoint: str, project: str) -> trace.Tracer:
     global _provider
-    if not endpoint:
-        return trace.NoOpTracer()
     from opentelemetry.exporter.otlp.proto.http.trace_exporter import OTLPSpanExporter
 
     _provider = TracerProvider(resource=Resource({"openinference.project.name": project}))

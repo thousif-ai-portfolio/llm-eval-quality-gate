@@ -56,6 +56,11 @@ def test_a_known_failure_in_a_suite_that_was_not_run_is_not_called_fixed():
     assert not any("now passes" in note for note in result.notes)
 
 
+def test_a_missing_baseline_is_noted():
+    result = evaluate(summary(), GATE, None)
+    assert any("No baseline yet" in note for note in result.notes)
+
+
 def test_baseline_from_another_dataset_version_is_not_compared():
     result = evaluate(
         summary(correctness=0.1), {"regression": {"max_drop": 0.1}}, summary(fingerprint="other")

@@ -42,7 +42,7 @@ def main() -> None:
     cases = [
         json.loads(line)
         for line in (ROOT / "datasets" / "v1" / "rag.jsonl").read_text("utf-8").splitlines()
-        if line
+        if line.strip()
     ]
     rag = build_service(Settings())
     tests, skipped, added = [], [], {}

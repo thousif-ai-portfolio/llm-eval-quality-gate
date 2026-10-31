@@ -208,6 +208,9 @@ def main(argv: list[str] | None = None) -> int:
     except (dataset.DatasetError, JudgeCacheMiss, TargetError) as exc:
         print(f"error: {exc.args[0] if exc.args else exc}", file=sys.stderr)
         return 2
+    except FileNotFoundError as exc:
+        print(f"error: {exc.filename} not found", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

@@ -34,6 +34,10 @@ def _sha256(path: Path) -> str:
 
 def freeze(version: str, base: Path = DATASETS) -> dict:
     folder = base / version
+    # A manifest copied from the previous version is fine; this version's own is not.
+    existing = folder / MANIFEST
+    if existing.is_file() and json.loads(existing.read_text("utf-8"))["version"] == version:
+        raise DatasetError(f"Dataset {version} is already frozen; freeze a new version instead.")
     files = {p.relative_to(folder).as_posix(): _sha256(p) for p in _data_files(folder)}
     manifest = {
         "version": version,

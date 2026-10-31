@@ -70,7 +70,6 @@ def make_target(suite: str, config: dict) -> Target:
             password=os.environ.get("EVAL_RAG_PASSWORD", ""),
             fixtures=ROOT / "datasets" / config["dataset"] / "fixtures",
             mode=rag.get("mode") or None,
-            top_k=rag.get("top_k") or None,
         )
     agent = config["agent"]
     return AgentTarget(
@@ -199,6 +198,12 @@ def rescore(out: Path, offline: bool = True, history: Path | None = HISTORY) -> 
         offline=offline,
         faithfulness_model=config["judge"]["faithfulness_model"],
     )
+    # A run is only valid on the dataset it was recorded on; a re-frozen dataset is refused.
+    if dataset.verify(meta["dataset"])["fingerprint"] != meta["fingerprint"]:
+        raise dataset.DatasetError(
+            f"{out.name} was recorded on another version of dataset {meta['dataset']}; "
+            "record it again."
+        )
     results = [score_case(c, responses[c.id], judge) for c in cases]
     _write_jsonl(out / "results.jsonl", results)
     pricing = config.get("pricing", {})

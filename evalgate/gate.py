@@ -34,7 +34,9 @@ def evaluate(summary: dict, gate: dict, baseline: dict | None) -> GateResult:
     metrics = summary["metrics"]
     base_metrics = (baseline or {}).get("metrics", {})
 
-    if baseline and baseline.get("fingerprint") != summary.get("fingerprint"):
+    if baseline is None:
+        result.notes.append("No baseline yet, so only minimums and security checks apply.")
+    elif baseline.get("fingerprint") != summary.get("fingerprint"):
         result.notes.append(
             "Baseline was measured on a different dataset version, so it is not compared."
         )

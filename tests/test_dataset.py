@@ -51,6 +51,17 @@ def test_a_new_version_is_frozen_with_its_own_fingerprint(tmp_path):
     assert len(dataset.load("v2", base=tmp_path)) == 24
 
 
+def test_a_frozen_version_cannot_be_frozen_again(tmp_path):
+    shutil.copytree(dataset.DATASETS / "v1", tmp_path / "v1")
+    with pytest.raises(dataset.DatasetError, match="already frozen"):
+        dataset.freeze("v1", base=tmp_path)
+
+
 def test_cli_reports_a_missing_dataset_without_a_traceback(capsys):
     assert main(["dataset", "verify", "v0"]) == 2
     assert "error: Dataset v0 has no manifest" in capsys.readouterr().err
+
+
+def test_cli_reports_a_missing_run_folder_without_a_traceback(capsys, tmp_path):
+    assert main(["gate", str(tmp_path / "no-such-run")]) == 2
+    assert "not found" in capsys.readouterr().err

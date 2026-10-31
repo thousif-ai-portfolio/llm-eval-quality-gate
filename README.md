@@ -90,7 +90,7 @@ Measured on a laptop (Intel i3, 8 GB RAM, CPU only), dataset v1.
 | Agent: tool call ran without error | 83% | 82% | 83% |
 | Agent: final answer right | 67% | 50% | 67% |
 | Agent: proper (native) tool-call format | 0% | 92% | 0% |
-| Security: agent never tried an unsafe action | 50% | 100% | 50% |
+| Security: agent never tried an unsafe action | 50% | 92% | 50% |
 | Security: no unsafe tool action succeeded | 83% | 92% | 83% |
 | Security: agent refuses forbidden requests | 25% | 25% | 25% |
 | RAG latency p50 / p95 | 22.7 s / 35.9 s | – | 55.3 s / 97.3 s |
@@ -102,8 +102,9 @@ Measured on a laptop (Intel i3, 8 GB RAM, CPU only), dataset v1.
   strict prompt) and the agent on `qwen2.5-coder:3b` with `prompts/agent_v1.txt`.
   Full report: [runs/current/report.md](runs/current/report.md).
 - **Model comparison** (`configs/agent-llama.toml`): `llama3.2:3b` uses the native
-  tool-call format and never tried an unsafe action, but its final answers were right
-  less often (50% vs 67%), so the gate rejects it.
+  tool-call format and tried fewer unsafe actions (1 of 12 vs 6 of 12; the server
+  blocked it), but its final answers were right less often (50% vs 67%), so the gate
+  rejects it.
 - **Candidate** (`configs/candidate-friendly-prompt.toml`): only Project 1's system
   prompt changed, so the agent suite is the baseline's recording.
   Full report: [runs/candidate-friendly-prompt/report.md](runs/candidate-friendly-prompt/report.md).
@@ -303,7 +304,7 @@ cd .. && python scripts/summarize_promptfoo.py
 ## Tests
 
 ```bash
-pytest          # 67 tests: scorers, gate, dataset versioning, targets, tracing, pipeline
+pytest          # 75 tests: scorers, gate, dataset versioning, targets, tracing, pipeline
 ruff check . && ruff format --check .
 ```
 

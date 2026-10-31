@@ -24,8 +24,6 @@ from evalgate.models import Case, Citation, Response, ToolCall
 
 
 class Target(Protocol):
-    name: str
-
     async def __aenter__(self) -> "Target": ...
     async def __aexit__(self, *exc: object) -> None: ...
     async def respond(self, case: Case) -> Response: ...
@@ -47,8 +45,6 @@ class RagTarget:
     indirect-injection cases are uploaded just before their case and deleted afterwards,
     so the knowledge base is left as it was found."""
 
-    name = "rag"
-
     def __init__(
         self,
         url: str,
@@ -56,12 +52,11 @@ class RagTarget:
         password: str,
         fixtures: Path,
         mode: str | None = None,
-        top_k: int | None = None,
         timeout_s: float = 300,
         transport: httpx.AsyncBaseTransport | None = None,
     ) -> None:
         self._url, self._username, self._password = url.rstrip("/"), username, password
-        self._fixtures, self._mode, self._top_k = fixtures, mode, top_k
+        self._fixtures, self._mode = fixtures, mode
         self._client = httpx.AsyncClient(base_url=self._url, timeout=timeout_s, transport=transport)
         self._uploaded: dict[str, str] = {}  # fixture name -> doc_id
 
@@ -99,14 +94,13 @@ class RagTarget:
         body: dict[str, Any] = {"question": case.input}
         if self._mode:
             body["mode"] = self._mode
-        if self._top_k:
-            body["top_k"] = self._top_k
         start = time.perf_counter()
         try:
             reply = await self._client.post("/api/ask", json=body)
             reply.raise_for_status()
         except httpx.HTTPError as exc:
-            return Response(case_id=case.id, error=f"{type(exc).__name__}: {exc}")
+            error = f"{type(exc).__name__}: {exc}"
+            return Response(case_id=case.id, error=error, latency_ms=_elapsed_ms(start))
         data = reply.json()
         return Response(
             case_id=case.id,
@@ -154,8 +148,6 @@ class AgentTarget:
     """Gives a local model Project 2's MCP tools and a task, runs up to `max_steps` rounds of
     tool calls through the real server, and records every call and its result."""
 
-    name = "agent"
-
     def __init__(
         self,
         project2: Path,
@@ -181,6 +173,8 @@ class AgentTarget:
             python = self._project2 / ".venv" / "Scripts" / "python.exe"
             if not python.is_file():
                 python = self._project2 / ".venv" / "bin" / "python"
+            if not python.is_file():
+                raise TargetError(f"Project 2 has no virtual environment at {self._project2}")
             params = StdioServerParameters(
                 command=str(python),
                 args=["-m", "agent.mcp_server", "--repo", str(self._project2 / "demo_repo")],
@@ -272,10 +266,22 @@ class AgentTarget:
                 tokens_in, tokens_out = await self._loop(messages, calls)
         except TimeoutError:
             error = f"No answer within {self._timeout_s:.0f} s"
-            return Response(case_id=case.id, error=error, tool_calls=calls, model=self._model)
+            return Response(
+                case_id=case.id,
+                error=error,
+                tool_calls=calls,
+                latency_ms=_elapsed_ms(start),
+                model=self._model,
+            )
         except (ollama.ResponseError, httpx.HTTPError) as exc:
             error = f"{type(exc).__name__}: {exc}"
-            return Response(case_id=case.id, error=error, tool_calls=calls, model=self._model)
+            return Response(
+                case_id=case.id,
+                error=error,
+                tool_calls=calls,
+                latency_ms=_elapsed_ms(start),
+                model=self._model,
+            )
         return Response(
             case_id=case.id,
             output=messages[-1]["content"],

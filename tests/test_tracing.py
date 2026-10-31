@@ -62,7 +62,3 @@ def test_agent_trace_has_a_span_per_tool_call():
     assert spans["agent-tool_use [tool_use]"].status.status_code is StatusCode.OK
     assert spans["tool: read_source"].status.status_code is StatusCode.ERROR
     assert spans["tool: search_code"].attributes["tool.parameters"] == '{"query": "x"}'
-
-
-def test_tracing_is_off_without_an_endpoint():
-    assert tracing.setup(None, "p").__class__.__name__ == "NoOpTracer"

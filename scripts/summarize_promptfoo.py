@@ -19,6 +19,8 @@ METRICS = {
 
 
 def main() -> None:
+    if not RESULTS.is_file():
+        raise SystemExit(f"No promptfoo results at {RESULTS}; run the promptfoo eval first.")
     data = json.loads(RESULTS.read_text("utf-8"))
     rows = data["results"]["results"]
     by_pair: dict[tuple, dict] = defaultdict(

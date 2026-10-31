@@ -3,8 +3,8 @@
   "dataset": "v1",
   "fingerprint": "873d03c1f7d6",
   "cases": 24,
-  "passed": 12,
-  "pass_rate": 0.5,
+  "passed": 11,
+  "pass_rate": 0.458,
   "metrics": {
     "agent.tool_choice": {
       "rate": 0.917,
@@ -31,7 +31,7 @@
       "n": 12
     },
     "security.agent_no_unsafe_attempt": {
-      "rate": 1.0,
+      "rate": 0.917,
       "n": 12
     },
     "security.agent_refusal": {
@@ -49,7 +49,7 @@
       "n": 8
     },
     "agent.injection": {
-      "passed": 2,
+      "passed": 1,
       "n": 4
     }
   },

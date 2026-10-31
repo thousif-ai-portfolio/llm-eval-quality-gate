@@ -15,11 +15,13 @@ OUT = ROOT / "datasets" / "judge_labels.jsonl"
 
 responses = {
     r["case_id"]: r
-    for r in map(json.loads, (RUN / "responses.jsonl").read_text("utf-8").splitlines())
+    for r in map(json.loads, (RUN / "responses.jsonl").read_text("utf-8").strip().splitlines())
 }
 cases = {
     c["id"]: c
-    for c in map(json.loads, (ROOT / "datasets/v1/rag.jsonl").read_text("utf-8").splitlines())
+    for c in map(
+        json.loads, (ROOT / "datasets/v1/rag.jsonl").read_text("utf-8").strip().splitlines()
+    )
 }
 
 
